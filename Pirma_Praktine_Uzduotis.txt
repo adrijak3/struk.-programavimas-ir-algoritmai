@@ -1,0 +1,19 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <iostream>
+using namespace std;
+int main()
+{
+    string vardas; vardas = "adrija";
+    string pavarde; pavarde = "kalikaite";
+    int amzius; amzius = 18;
+    string grupe; grupe = "IS25";
+    int kursas; kursas = 1;
+    string programa; programa = "informacines sistemos";
+
+    cout << vardas << " " << pavarde << " " << amzius << " " << grupe << " " << kursas << " " << programa << endl;
+
+    return 0;
+}
+

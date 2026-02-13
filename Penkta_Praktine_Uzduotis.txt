@@ -1,0 +1,23 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <iostream>
+using namespace std;
+double vidurkis(int a, int b, int c, int d, int e);
+int main()
+{
+   int a,b,c,d,e; 
+    a = 12; b = 2; c = 4; d = 6; e = 10;
+   cout << vid << endl;
+
+    return 0;
+}
+double vidurkis(int a, int b, int c, int d, int e)
+{  int n;
+    int suma; 
+    suma = 0;
+    suma = a + b + c + d + e;
+    double vid = suma / n;
+    return vid;
+}
+
