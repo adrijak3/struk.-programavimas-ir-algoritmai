@@ -1,0 +1,36 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    double GBP_Bendras   = 0.8729;
+    double GBP_Pirkti    = 0.8600;
+    double GBP_Parduoti  = 0.9220;
+    double USD_Bendras   = 1.1793;
+    double USD_Pirkti    = 1.1460;
+    double USD_Parduoti  = 1.2340;
+    double INR_Bendras   = 104.6918;
+    double INR_Pirkti    = 101.3862;
+    double INR_Parduoti  = 107.8546;
+
+    int konvertavimas; string valiuta; double kiekis;
+
+    cout << konvertavimas << endl;
+    cout << "1: Pirkimas" << endl;
+    cout << "2: Pardavimas" << endl;
+    cout << "3: Palyginimas" << endl;
+    cin >> konvertavimas;
+    cout << valiutos pasirinkimas << "GBP,USD,INR,EUR" << endl;
+    cin << valiuta;
+    
+
+
+
+
+
+
+    return 0;
+}

@@ -1,0 +1,18 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <iostream>
+using namespace std;
+int main()
+{
+    string pavadinimas; pavadinimas = "Kauno zalgiris";
+    int metai; metai = 1999;
+    string owner; owner = "random";
+    string arena; arena = "kauno";
+    int vietos; vietos = 10000;
+    
+    cout << pavadinimas << " " << metai << " " << owner << " " << arena << " " << vietos << endl;
+
+    return 0;
+}
+

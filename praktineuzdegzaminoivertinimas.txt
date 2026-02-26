@@ -1,0 +1,37 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <fstream>
+using namespace std;
+double vidurkis(int n, double ivertinimas);
+int spausdinimas (int n, double vid);
+int main()
+{   int A[20];
+    int n; double vid; int rez;
+  double ivertinimas;
+    cin >> ivertinimas;
+    vid = vidurkis(n,ivertinimas);
+    rez = spausdinimas(n,vid);
+
+    return 0;
+}
+double vidurkis(int n, double ivertinimas)
+{ double suma = 0; double v;
+    for (int i = 0; i < n; i++)
+    {
+        suma = suma + ivertinimas;
+        v = suma / n;
+    }
+    return v;
+}
+int spausdinimas (int n, double vid)
+{
+    if (vid >= 5) cout << vid << endl;
+    if (vid < 5) cout << "Vidurkis yra neigiamas" << endl;
+    if (vid == 10) cout<< "puiku" << endl;
+    else if (vid >= 9) cout <<  "labai gerai" << endl;
+    else if (vid >= 7) cout <<  "gerai" << endl;
+    else if (vid >= 5) cout << "patenkinamai" << endl;
+    else if (vid < 5) cout << "egzaminas neislaikytas" << endl;
+}
+
