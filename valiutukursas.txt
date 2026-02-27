@@ -1,36 +1,56 @@
 #include <iostream>
 #include <iomanip>
-#include <cmath>
-#include <fstream>
 using namespace std;
 
-int main()
-{
-    double GBP_Bendras   = 0.8729;
-    double GBP_Pirkti    = 0.8600;
-    double GBP_Parduoti  = 0.9220;
-    double USD_Bendras   = 1.1793;
-    double USD_Pirkti    = 1.1460;
-    double USD_Parduoti  = 1.2340;
-    double INR_Bendras   = 104.6918;
-    double INR_Pirkti    = 101.3862;
-    double INR_Parduoti  = 107.8546;
+int main() {
+    string V[100]; int pasirinkimas;
+    int P[10];
+    int n, i, pazymys; string mokinys;
+    cout << "Meniu - " << endl;
+    cout << "1 - Peržiūrėti visų mokinių pažymius" << endl;
+    cout << "2 - Konkretaus mokinio pažymys" << endl;
+    cout << "3 - Atnaujinti pažymį konkrečiam mokiniui" << endl;
+    cout << "4 - Mokinio šalinimas iš sąrašo" << endl;
+    cin >> pasirinkimas;
 
-    int konvertavimas; string valiuta; double kiekis;
+    switch (pasirinkimas)
+        {
+        case 1:
+        for (int = 0; i < n; i++)
+        {
+            cout << V[i] << endl;
+        }
+        break;
+        case 2:
+            cout << "Kokio mokinio ieškote? " << endl;
+            cin >> n;
+            for (int = 0; i < n; i++)
+                {
+                if (V[i] != n) cout << "Tokio mokinio nėra" << endl;
+                else cout << "Mokinio pažymys -" << i << endl;
+                }
 
-    cout << konvertavimas << endl;
-    cout << "1: Pirkimas" << endl;
-    cout << "2: Pardavimas" << endl;
-    cout << "3: Palyginimas" << endl;
-    cin >> konvertavimas;
-    cout << valiutos pasirinkimas << "GBP,USD,INR,EUR" << endl;
-    cin << valiuta;
-    
-
-
-
-
-
+            break;
+            case 3:
+            cout << "Kokio mokinio ieškote? " << endl; string mok;
+            cin >> mok;
+            cout << "Į kokį pažymį norite pakeisti? " << endl;
+            cin >> pazymys;
+            for (int i = 0; i < n; i++) {
+                if (V[i] = mok) P[n] == pazymys;
+                else cout << " Tokio mokinio nėra" << endl;
+            }
+            break;
+        case 4:
+            cout << "Kurį mokinį norite pašalinti iš sąrašo?" << endl;
+            cin >> mokinys;
+            for (int i = 0; i < mokinys; i++)
+            {
+              cout << "nera" << endl
+            }
+            break;
+        default: cout << "Klaida" << endl;
+        }
 
     return 0;
 }
