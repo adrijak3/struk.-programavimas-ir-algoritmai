@@ -1,0 +1,189 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+const int MAX_MOK = 100;
+const int MAX_PAZ = 10;
+
+string vardai[MAX_MOK];
+int pazymiai[MAX_MOK][MAX_PAZ];
+int pazKiekis[MAX_MOK];
+int mokKiekis = 0;
+
+// ---- funkcijos ----
+
+void ivesti() {
+    cout << "Kiek mokiniu nori ivesti? ";
+    int n;
+    cin >> n;
+
+    if (n + mokKiekis > MAX_MOK) {
+        cout << "Per daug mokiniu!\n";
+        return;
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << "Ivesk mokinio varda: ";
+        cin >> vardai[mokKiekis];
+
+        cout << "Kiek pazymiu?: ";
+        cin >> pazKiekis[mokKiekis];
+
+        if (pazKiekis[mokKiekis] > MAX_PAZ)
+            pazKiekis[mokKiekis] = MAX_PAZ;
+
+        for (int j = 0; j < pazKiekis[mokKiekis]; j++) {
+            cout << "Pazymys " << j+1 << ": ";
+            cin >> pazymiai[mokKiekis][j];
+        }
+
+        mokKiekis++;
+    }
+}
+
+void rodyti() {
+    for (int i = 0; i < mokKiekis; i++) {
+        cout << vardai[i] << ": ";
+        for (int j = 0; j < pazKiekis[i]; j++) {
+            cout << pazymiai[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void rodytiViena() {
+    string vardas;
+    cout << "Ivesk mokinio varda: ";
+    cin >> vardas;
+
+    for (int i = 0; i < mokKiekis; i++) {
+        if (vardai[i] == vardas) {
+            cout << vardai[i] << ": ";
+            for (int j = 0; j < pazKiekis[i]; j++) {
+                cout << pazymiai[i][j] << " ";
+            }
+            cout << endl;
+            return;
+        }
+    }
+
+    cout << "Mokinys nerastas\n";
+}
+
+void atnaujinti() {
+    string vardas;
+    cout << "Kuri mokini keisti?: ";
+    cin >> vardas;
+
+    for (int i = 0; i < mokKiekis; i++) {
+        if (vardai[i] == vardas) {
+            int nr;
+            cout << "Kuri pazymi keisti (1-" << pazKiekis[i] << "): ";
+            cin >> nr;
+
+            if (nr >= 1 && nr <= pazKiekis[i]) {
+                cout << "Naujas pazymys: ";
+                cin >> pazymiai[i][nr-1];
+            }
+            return;
+        }
+    }
+
+    cout << "Mokinys nerastas\n";
+}
+
+void istrinti() {
+    string vardas;
+    cout << "Kuri mokini istrinti?: ";
+    cin >> vardas;
+
+    for (int i = 0; i < mokKiekis; i++) {
+        if (vardai[i] == vardas) {
+            for (int j = i; j < mokKiekis - 1; j++) {
+                vardai[j] = vardai[j+1];
+                pazKiekis[j] = pazKiekis[j+1];
+
+                for (int k = 0; k < MAX_PAZ; k++) {
+                    pazymiai[j][k] = pazymiai[j+1][k];
+                }
+            }
+            mokKiekis--;
+            cout << "Istrinta\n";
+            return;
+        }
+    }
+
+    cout << "Mokinys nerastas\n";
+}
+
+// ---- failai ----
+
+void issaugoti() {
+    ofstream fd("duomenys.txt");
+
+    fd << mokKiekis << endl;
+
+    for (int i = 0; i < mokKiekis; i++) {
+        fd << vardai[i] << " " << pazKiekis[i] << " ";
+        for (int j = 0; j < pazKiekis[i]; j++) {
+            fd << pazymiai[i][j] << " ";
+        }
+        fd << endl;
+    }
+
+    fd.close();
+    cout << "Issaugota i faila\n";
+}
+
+void nuskaityti() {
+    ifstream fd("duomenys.txt");
+
+    if (!fd) {
+        cout << "Failas nerastas\n";
+        return;
+    }
+
+    fd >> mokKiekis;
+
+    for (int i = 0; i < mokKiekis; i++) {
+        fd >> vardai[i] >> pazKiekis[i];
+        for (int j = 0; j < pazKiekis[i]; j++) {
+            fd >> pazymiai[i][j];
+        }
+    }
+
+    fd.close();
+    cout << "Duomenys uzkrauti\n";
+}
+
+// ---- main ----
+
+int main() {
+    int pasirinkimas;
+
+    while (true) {
+        cout << "\n--- MENIU ---\n";
+        cout << "1. Ivesta\n";
+        cout << "2. Rodyti visus\n";
+        cout << "3. Rodyti viena\n";
+        cout << "4. Atnaujinti pazymi\n";
+        cout << "5. Istrinti mokini\n";
+        cout << "6. Issaugoti i faila\n";
+        cout << "7. Nuskaityti is failo\n";
+        cout << "0. Baigti\n";
+
+        cin >> pasirinkimas;
+
+        switch (pasirinkimas) {
+            case 1: ivesti(); break;
+            case 2: rodyti(); break;
+            case 3: rodytiViena(); break;
+            case 4: atnaujinti(); break;
+            case 5: istrinti(); break;
+            case 6: issaugoti(); break;
+            case 7: nuskaityti(); break;
+            case 0: return 0;
+            default: cout << "Blogas pasirinkimas\n";
+        }
+    }
+}
