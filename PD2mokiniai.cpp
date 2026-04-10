@@ -2,12 +2,6 @@
 #include <string>
 #include <cstdlib>
 using namespace std;
-
-void linija()
-{
-    cout << "------------\n";
-}
-
 int main()
 {
     string vardai[100];
@@ -17,26 +11,20 @@ int main()
     char pasirinkimas;
 
     while (true) {
-        linija();
-        cout << "meniu\n";
+
         cout << "1. Prideti mokini ir jo pazymius\n";
         cout << "2. Perziureti visus mokinius ir pazymius\n";
         cout << "3. Perziureti konkretaus mokinio pazymius\n";
         cout << "4. Atnaujinti mokinio pazymi\n";
         cout << "5. Pasalinti mokini\n";
         cout << "6. Iseiti\n";
-        linija();
-        cout << "Pasirinkite veiksma\n> ";
+        cout << "Pasirinkite veiksma!:)\n> ";
 
         cin >> pasirinkimas;
-
-
         switch (pasirinkimas) {
             case '1':
                 if (mokiniuKiekis>=100) {
-                    linija();
                     cout <<"Siuo metu sistemoje yra per daug mokiniu.";
-                    linija();
                     break;
                 }
                 cout <<"Iveskite mokinio varda:\n> ";
@@ -46,9 +34,7 @@ int main()
                 cin >> pazymiuKiekis[mokiniuKiekis];
 
                 while (pazymiuKiekis[mokiniuKiekis] > 10 || pazymiuKiekis[mokiniuKiekis] < 1) {
-                    linija();
                     cout << "Ivesta per daug arba per mazai pazymiu.\n";
-                    linija();
                     cout << "Kiek pazymiu norite ivesti?\n> ";
                     cin >> pazymiuKiekis[mokiniuKiekis];
                 }
@@ -56,27 +42,27 @@ int main()
                 for (int i = 0; i < pazymiuKiekis[mokiniuKiekis]; i++) {
                     cout << "Pazymys " << i + 1 << ": ";
                     cin >> pazymiai[mokiniuKiekis][i];
-
                     while (pazymiai[mokiniuKiekis][i] < 1 || pazymiai[mokiniuKiekis][i] > 10) {
-                        linija();
                         cout << "klaida. Iveskite pazymi nuo 1 iki 10.\n> ";
                         cin >> pazymiai[mokiniuKiekis][i];
                     }
                 }
-                linija();
+
                 cout << "done\n";
+            cout <<".................." << endl;
                 mokiniuKiekis++; //padidinam +1 nes idejom mokini
                 break;
 
             case '2':
             {
                 if (mokiniuKiekis == 0) {
-                    linija();
-                    cout << "Sistemoje nera jokiu mokiniu.\n";
+
+                    cout << "Nera jokiu mokiniu.\n";
+                    cout <<".................." << endl;
                     break;
                 }
 
-                cout << "\nvisi mokiniai\n";
+                cout << "\nvisi mokiniai:\n";
 
                 for (int i = 0; i < mokiniuKiekis; i++) {
                     cout << i + 1 << ". " << vardai[i] << ": ";
@@ -86,6 +72,7 @@ int main()
                     }
 
                     cout << endl;
+                    cout <<".................." << endl;
                 }
                 break;
             }
@@ -93,34 +80,35 @@ int main()
             case '3':
             {
                 if (mokiniuKiekis == 0) {
-                    linija();
+
                     cout << "Sistemoje nera mokiniu.\n";
+                    cout <<".................." << endl;
                     break;
                 }
 
                 cout << "\nSarasas\n";
                 for (int i = 0; i < mokiniuKiekis; i++) {
-                    cout << i + 1 << ". " << vardai[i] << endl; // vel +1 visual
+                    cout << i + 1 << ". " << vardai[i] << endl; // vel +1 kad graziau:)
                 }
 
                 int numeris;
-                cout << "Iveskite mokinio numeri:\n> ";
+                cout << "Iveskite mokinio numeri -\n> ";
                 cin >> numeris;
 
-                numeris = numeris - 1; // nes masyvas nuo 0
+                numeris = numeris - 1; // nes masyvas nuo 0 bet mes matom nuo vienetuko
 
                 if (numeris < 0 || numeris >= mokiniuKiekis) {
-                    linija();
-                    cout << "Tokio mokinio nera.\n";
+
+                    cout << "Tokio mokinio nera :(\n";
+                    cout <<".................." << endl;
                     break;
                 }
-                cout << "Mokinys: " << vardai[numeris] << endl;
-                cout << "Pazymiai: ";
+                cout << "Mokinys - " << vardai[numeris] << endl;
+                cout << "Pazymiai - ";
 
                 for (int i = 0; i < pazymiuKiekis[numeris]; i++) {
                     cout << pazymiai[numeris][i] << " ";
                 }
-
                 cout << endl;
                 break;
             }
@@ -128,36 +116,38 @@ int main()
             case '4':
             {
                 if (mokiniuKiekis == 0) {
-                    linija();
+
                     cout << "Sistemoje nera mokiniu.\n";
+                    cout <<".................." << endl;
                     break;
                 }
 
                 cout << "\nSarasas\n";
                 for (int i = 0; i < mokiniuKiekis; i++) {
-                    cout << i + 1 << ". " << vardai[i] << endl; //plius vienas
+                    cout << i + 1 << ". " << vardai[i] << endl;
                 }
 
                 int numeris;
-                cout << "Iveskite mokinio numeri:\n> ";
+                cout << "Iveskite mokinio numeri -\n> ";
                 cin >> numeris;
 
-                numeris = numeris - 1; // start over or sum
+                numeris = numeris - 1;
 
                 if (numeris < 0 || numeris >= mokiniuKiekis) {
-                    linija();
+
                     cout << "Tokio mokinio nera.\n";
+                    cout <<".................." << endl;
                     break;
                 }
 
                 cout << "Mokinys: " << vardai[numeris] << endl;
                 if (pazymiuKiekis[numeris] == 0) {
-                    linija();
+
                     cout << "Sis mokinys neturi pazymiu.\n";
                     break;
                 }
 
-                // pazymiuai su numeriais
+                // pazymiuai kad butu sunumeruoti
                 for (int i = 0; i < pazymiuKiekis[numeris]; i++) {
                     cout << i + 1 << ". " << pazymiai[numeris][i] << endl;
                 }
@@ -166,36 +156,37 @@ int main()
                 cout << "Kuri pazymi norite keisti?\n> ";
                 cin >> indeksas;
 
-                indeksas = indeksas - 1; //resetttt
+                indeksas = indeksas - 1; //resetttt pazymys kad panaikintu
 
                 if (indeksas < 0 || indeksas >= pazymiuKiekis[numeris]) {
-                    linija();
+
                     cout << "Tokio pazymio nera.\n";
+                    cout <<".................." << endl;
                     break;
                 }
-
                 int naujas;
                 cout << "Iveskite nauja pazymi:\n> ";
                 cin >> naujas;
 
                 // kad teisingas pazymys
                 if (naujas < 1 || naujas > 10) {
-                    linija();
-                    cout << "Blogas pazymys. Turi buti nuo 1 iki 10.\n";
+
+                    cout << "Pazymys turi buti nuo 1 iki 10!\n";
                     break;
                 }
 
                 pazymiai[numeris][indeksas] = naujas;
-                linija();
-                cout << "Pazymys sekmingai atnaujintas.\n";
+
+                cout << "Pazymys sekmingai atnaujintas!:)\n";
+                    cout <<".................." << endl;
                 break;
             }
-
             case '5':
             {
                 if (mokiniuKiekis == 0) {
-                    linija();
+
                     cout << "Sistemoje nera mokiniu.\n";
+                    cout <<".................." << endl;
                     break;
                 }
 
@@ -211,11 +202,11 @@ int main()
                 numeris = numeris - 1;
 
                 if (numeris < 0 || numeris >= mokiniuKiekis) {
-                    linija();
+
                     cout << "Tokio mokinio nera.\n";
+                    cout <<".................." << endl;
                     break;
                 }
-
 
                 for (int i = numeris; i < mokiniuKiekis - 1; i++) {
                     vardai[i] = vardai[i + 1];
@@ -227,19 +218,20 @@ int main()
                 }
 
                 mokiniuKiekis--;
-                linija();
+
                 cout << "Mokinys sekmingai pasalintas.\n";
+                    cout <<".................." << endl;
                 break;
             }
             case '6':
-                linija();
-                cout << "baigta\n";
-                linija();
+
+                cout << "baigta!\n";
+
                 return 0;
 
             default:
-                linija();
-                cout << "klaida.\n";
+
+                cout << "klaida :')\n";
                 break;
         }
     }
